@@ -1,0 +1,463 @@
+<!-- =================================================================================
+                        VEDIKAS LOGO
+================================================================================== -->
+<nav class="navbar navbar-white bg-white">
+    <a class="navbar-brand" href="#">
+        <img src="../../../../../assets/Images/ProjectName.png" alt="Vedikas" style="width: 140px;">
+    </a>
+</nav>
+<!-- =================================================================================
+    		            PROGRESS BAR
+================================================================================== -->
+<section class="main">
+    <div class="container pt-5">
+        <p style="margin-top: 50px;">Progress</p>
+        <div class="progress" style="height: 6px;">
+            <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0"
+                aria-valuemax="100">
+            </div>
+        </div>
+        <hr>
+        <!-- =================================================================================
+    		           WELCOME OPTIONS WITH GRID 
+================================================================================== -->
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <h4><a [routerLink]="['../dashboard/']">Welcome</a></h4>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../location/']" style="padding-left: 20px;">Location</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="rec"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../details/']" style="padding-left: 20px;">Details</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="rec"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../photos/']" style="padding-left: 20px;">Photos</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="rec"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../security/']" style="padding-left: 20px;">Security</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="rec"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../payment/']" style="padding-left: 20px;">Payment</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="rec"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../publishlisting/']" style="padding-left: 20px;">Publish listing</a><br><br>
+            </div>
+            <!-- =================================================================================
+    		           OWNER FUNCTION HALL DETAILS FORM
+================================================================================== -->
+            <div class="col-md-8" style="margin-top: 20px;">
+                <div class="data" style="height: auto;padding:40px; margin-bottom: 80px;">
+                    <h3><b>Describe your functionhall</b></h3>
+                    <hr>
+                    <h3><b>Give your functionhall name and description</b></h3>
+                    <p>Describe what makes your functionhall special to let users know your hall
+                        is the perfect place for their parties
+                    </p>
+
+                    <form [formGroup]="DetailsForm" (ngSubmit)="onclick()">
+                        <div class="form-row">
+
+                            <div class="form-group">
+                                <label for="name">Function Hall Name<span class="required">*</span></label>
+                                <input type="text" name="name" class="form-control" style="height: 50px;"
+                                    formControlName="name"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('name').touched && DetailsForm.get('name').invalid}" />
+                                <div *ngIf="DetailsForm.get('name').touched && DetailsForm.get('name').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('name').errors.required">Function Hall Name is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('name').errors.name">Function Hall Name
+                                        must be a
+                                        valid</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="functionhalldescription">Function Hall Descrption<span
+                                        class="required">*</span></label>
+
+                                <textarea type="text" name="functionhalldescription" class="form-control" rows="8"
+                                    formControlName="functionhalldescription" style="height: 100px;"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('functionhalldescription').touched && DetailsForm.get('functionhalldescription').invalid}">
+                                </textarea>
+                                <div *ngIf="DetailsForm.get('functionhalldescription').touched && DetailsForm.get('functionhalldescription').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('functionhalldescription').errors.required">Descrption
+                                        is
+                                        required</div>
+                                    <div
+                                        *ngIf="DetailsForm.get('functionhalldescription').errors.functionhalldescription">
+                                        Descrption
+                                        must be a
+                                        valid</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="functionhalltype">Function Hall Type<span class="required">*</span></label>
+
+                                <select id="functionhalltype" class="form-control" formControlName="functionhalltype"
+                                    name="functionhalltype" style="height: 50px;"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('functionhalltype').touched && DetailsForm.get('functionhalltype').invalid}">
+                                    <option value="" disabled selected hidden>Select Hall Type</option>
+                                    <option>AC</option>
+                                    <option>Non-AC</option>
+                                </select>
+                                <div *ngIf="DetailsForm.get('functionhalltype').touched && DetailsForm.get('functionhalltype').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('functionhalltype').errors.required">Function Hall Type
+                                        is required</div>
+                                    <div *ngIf="DetailsForm.get('functionhalltype').errors.functionhalltype">
+                                        functionhalltype must be a valid functionhalltype
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="briderooms">Bride (or) Bridegroom Room<span
+                                        class="required">*</span></label>
+                                <select id="briderooms" class="form-control" formControlName="briderooms"
+                                    name="briderooms" style="height: 50px;"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('briderooms').touched && DetailsForm.get('briderooms').invalid}">
+                                    <option value="" disabled selected hidden>Select Room </option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select>
+                                <div *ngIf="DetailsForm.get('briderooms').touched && DetailsForm.get('briderooms').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('briderooms').errors.required">
+                                        Bride or Bridegroom Room
+                                        is required</div>
+                                    <div *ngIf="DetailsForm.get('briderooms').errors.briderooms">
+                                        Bride or Bridegroom Room must be a valid Bride or Bridegroom Room
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="maximumguest">Maximum Guest<span class="required">*</span></label>
+
+
+                                <select class="form-control" type="number" name="maximumguest"
+                                    formControlName="maximumguest" style="height: 50px;"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('maximumguest').touched && DetailsForm.get('maximumguest').invalid}">
+
+                                    <option value="" disabled selected hidden>Select Guest Capacity</option>
+                                    <option>1000</option>
+                                    <option>1500</option>
+                                    <option>2000</option>
+                                    <option>2500</option>
+                                    <option>3000</option>
+                                    <option>3500</option>
+                                    <option>4000</option>
+                                    <option>4500</option>
+                                </select>
+                                <div *ngIf="DetailsForm.get('maximumguest').touched && DetailsForm.get('maximumguest').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('maximumguest').errors.required">Maximum Guest is
+                                        required
+                                    </div>
+                                    <div *ngIf="DetailsForm.get('maximumguest').errors.maximumguest">maximumguest must
+                                        be a valid
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="functionhallPrice">Functionhall Price<span class="required">*</span></label>
+                                <input type="text" name="functionhallPrice" class="form-control" style="height: 50px;" formControlName="functionhallPrice"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('functionhallPrice').touched && DetailsForm.get('functionhallPrice').invalid}" />
+                                <div *ngIf="DetailsForm.get('functionhallPrice').touched && DetailsForm.get('functionhallPrice').invalid" class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('functionhallPrice').errors.required">Function Hall Price is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('functionhallPrice').errors.functionhallPrice">Function Hall Price
+                                        must be a
+                                        valid</div>
+                                </div>
+                            </div>
+
+                            <!-- =================================================================================
+    		          AMENITIES CHECK BOXES
+================================================================================== -->
+
+                            <!-- <div class="form-row"> -->
+                            <label for="">
+                                <h3>Amenities<span class="required">*</span></h3>
+                            </label>
+                            <div class="form-check">
+                                <input class="form-check-input" name="parking" type="checkbox" value="parking"
+                                    id="parking" formControlName="parking"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('parking').touched && DetailsForm.get('parking').invalid}" />
+                                <div *ngIf="DetailsForm.get('parking').touched && DetailsForm.get('parking').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('parking').errors.required">Parking is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('parking').errors.parking">Parking
+                                        must be
+                                        valid </div>
+                                </div> &nbsp;
+                                <label class="form-check-label" for="parking">
+                                    Parking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="internet" type="checkbox" value="internet"
+                                    id="internet" formControlName="internet"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('internet').touched && DetailsForm.get('internet').invalid}" />
+                                <div *ngIf="DetailsForm.get('internet').touched && DetailsForm.get('internet').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('internet').errors.required">Internet is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('internet').errors.internet">Internet
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="internet">
+                                    Internet
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="nosmoking" type="checkbox" value="nosmoking"
+                                    id="nosmoking" formControlName="nosmoking"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('nosmoking').touched && DetailsForm.get('nosmoking').invalid}" />
+                                <div *ngIf="DetailsForm.get('nosmoking').touched && DetailsForm.get('nosmoking').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('nosmoking').errors.required">No Smoking is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('nosmoking').errors.nosmoking">No Smoking
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="nosmoking">
+                                    NoSmoking
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="airconditioning" type="checkbox"
+                                    value="airconditioning" id="airconditioning" formControlName="airconditioning"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('airconditioning').touched && DetailsForm.get('airconditioning').invalid}" />
+                                <div *ngIf="DetailsForm.get('airconditioning').touched && DetailsForm.get('airconditioning').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('airconditioning').errors.required">Air Conditioning is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('airconditioning').errors.airconditioning">Air
+                                        Conditioning
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="airconditioning">
+                                    AirConditioning
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="soundsystem" type="checkbox" value="soundsystem"
+                                    id="soundsystem" formControlName="soundsystem"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('soundsystem').touched && DetailsForm.get('soundsystem').invalid}" />
+                                <div *ngIf="DetailsForm.get('soundsystem').touched && DetailsForm.get('soundsystem').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('soundsystem').errors.required">Sound System is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('soundsystem').errors.soundsystem">Sound System
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="soundsystem">
+                                    SoundSystem
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="lightingsystem" type="checkbox"
+                                    value="lightingsystem" id="lightingsystem" formControlName="lightingsystem"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('lightingsystem').touched && DetailsForm.get('lightingsystem').invalid}" />
+                                <div *ngIf="DetailsForm.get('lightingsystem').touched && DetailsForm.get('lightingsystem').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('lightingsystem').errors.required">Lighting System is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('lightingsystem').errors.lightingsystem">Lighting System
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="lightingsystem">
+                                    LightingSystem
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="dancefloor" type="checkbox" value="dancefloor"
+                                    id="dancefloor" formControlName="dancefloor"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('dancefloor').touched && DetailsForm.get('dancefloor').invalid}" />
+                                <div *ngIf="DetailsForm.get('dancefloor').touched && DetailsForm.get('dancefloor').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('dancefloor').errors.required">Dance floor is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('dancefloor').errors.dancefloor">Dance floor
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="dancefloor">
+                                    Dancefloor
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="noalcohol" type="checkbox" value="noalcohol"
+                                    id="noalcohol" formControlName="noalcohol"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('noalcohol').touched && DetailsForm.get('noalcohol').invalid}" />
+                                <div *ngIf="DetailsForm.get('noalcohol').touched && DetailsForm.get('noalcohol').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('noalcohol').errors.required">No Alcohol is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('noalcohol').errors.noalcohol">No Alcohol
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="noalcohol">
+                                    NoAlcohol
+                                </label>
+                            </div>
+                            <!-- =================================================================================
+    		          EVENT TYPE CHECK BOXES
+================================================================================== -->
+
+                            <label for="">
+                                <h3>Event Type<span class="required">*</span></h3>
+                            </label>
+                            <div class="form-check">
+                                <input class="form-check-input" name="banquethall" type="checkbox" value="banquethall"
+                                    id="banquethall" formControlName="banquethall"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('banquethall').touched && DetailsForm.get('banquethall').invalid}" />
+                                <div *ngIf="DetailsForm.get('banquethall').touched && DetailsForm.get('banquethall').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('banquethall').errors.required">banquethall is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('banquethall').errors.banquethall">banquethall
+                                        must be
+                                        valid </div>
+                                </div> &nbsp;
+                                <label class="form-check-label" for="banquethall">
+                                    BanquetHall
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="partyroom" type="checkbox" value="partyroom"
+                                    id="partyroom" formControlName="partyroom"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('partyroom').touched && DetailsForm.get('partyroom').invalid}" />
+                                <div *ngIf="DetailsForm.get('partyroom').touched && DetailsForm.get('partyroom').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('partyroom').errors.required">partyroom is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('partyroom').errors.partyroom">partyroom
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="partyroom">
+                                    Partyroom
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="conference" type="checkbox" value="conference"
+                                    id="conference" formControlName="conference"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('conference').touched && DetailsForm.get('conference').invalid}" />
+                                <div *ngIf="DetailsForm.get('conference').touched && DetailsForm.get('conference').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('conference').errors.required">conference is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('conference').errors.conference">conference
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="conference">
+                                    Meeting / Conference
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="performance" type="checkbox" value="performance"
+                                    id="performance" formControlName="performance"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('performance').touched && DetailsForm.get('performance').invalid}" />
+                                <div *ngIf="DetailsForm.get('performance').touched && DetailsForm.get('performance').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('performance').errors.required">performance is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('performance').errors.performance">performance
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="performance">
+                                    Performance / Shows
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="weddinghall" type="checkbox" value="weddinghall"
+                                    id="weddinghall" formControlName="weddinghall"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('weddinghall').touched && DetailsForm.get('weddinghall').invalid}" />
+                                <div *ngIf="DetailsForm.get('weddinghall').touched && DetailsForm.get('weddinghall').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('weddinghall').errors.required">weddinghall is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('weddinghall').errors.weddinghall">weddinghall
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="weddinghall">
+                                    wedding hall
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="eventspace" type="checkbox" value="eventspace"
+                                    id="eventspace" formControlName="eventspace"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('eventspace').touched && DetailsForm.get('eventspace').invalid}" />
+                                <div *ngIf="DetailsForm.get('eventspace').touched && DetailsForm.get('eventspace').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('eventspace').errors.required">Multi-purpose event space
+                                        is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('eventspace').errors.eventspace">Multi-purpose event
+                                        space
+                                        must be
+                                        valid </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="eventspace">
+                                    Multi-purpose event space
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" name="nightclub" type="checkbox" value="nightclub"
+                                    id="nightclub" formControlName="nightclub"
+                                    [ngClass]="{'is-invalid':DetailsForm.get('nightclub').touched && DetailsForm.get('nightclub').invalid}" />
+                                <div *ngIf="DetailsForm.get('nightclub').touched && DetailsForm.get('nightclub').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="DetailsForm.get('nightclub').errors.required">nightclub is
+                                        required</div>
+                                    <div *ngIf="DetailsForm.get('nightclub').errors.Nightclub">nightclub
+                                        must be
+                                        valid
+                                    </div>
+                                </div>&nbsp;
+                                <label class="form-check-label" for="nightclub">
+                                    Nightclub / Bar
+                                </label>
+                            </div>
+                            <hr>
+                            <!-- =================================================================================
+    		           BACK AND NEXT BUTTONS
+================================================================================== -->
+                            <span>
+                                <button type="submit" class="btn btn-outline" (click)="back()">Back</button>
+                                <button type="submit" style="margin-left: 400px;" class="btn btn-primary "
+                                    (click)="onclick()">Next
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,74 @@
+<nav class="navbar navbar-white bg-white">
+  <a class="navbar-brand" href="#">
+    <img src="../../../../../assets/Images/ProjectName1.png" alt="Vedikas" style="width: 140px;">
+  </a>
+</nav>
+<div class="login-form">
+  <form [formGroup]="LoginForm">
+    <h2><strong>Login</strong></h2>
+    <br>
+    <div class="form-group ">
+      <!-- <label>Mobile Number</label> -->
+      <input type="tel" id="mobileNumber" class="form-control" formControlName="mobileNumber"
+        placeholder="Mobile Number*" style="height: 40px;"
+        [ngClass]="{'is-invalid':LoginForm.get('mobileNumber').touched && LoginForm.get('mobileNumber').invalid}" />
+      <div *ngIf="LoginForm.get('mobileNumber').touched && LoginForm.get('mobileNumber').invalid"
+        class="invalid-feedback">
+        <div *ngIf="LoginForm.get('mobileNumber').errors.required" style="color: red;">
+          Mobile Number is required
+        </div>
+        <div *ngIf="LoginForm.get('mobileNumber').errors.mobileNumber">
+          Mobile Number must be a valid  Number
+        </div>
+      </div>
+    </div>
+    <div class="form-group" style="margin-left: 90px;">
+      <button type="button" class="btn btn-link" (click)="sendotp(LoginForm.value)">Resend otp</button>
+      <button type="submit" class="btn btn-primary" (click)="sendotp(LoginForm.value)">Send otp</button>
+    </div>
+    <div>
+      <p *ngIf="message" style="color: green;">{{message}}</p>
+    </div>
+    <div class="form-group ">
+      <!-- <label>otp<span>*</span></label> -->
+      <input type="otp" id="otp" class="form-control" formControlName="otp" placeholder="OTP*" style="height: 40px;"
+       
+      
+      [ngClass]="{'is-invalid':LoginForm.get('otp').touched && LoginForm.get('otp').invalid}" />
+      <div *ngIf="LoginForm.get('otp').touched && LoginForm.get('otp').invalid" class="invalid-feedback">
+        <div *ngIf="LoginForm.get('otp').errors.required" style="color: red;">
+          OTP is required 
+        </div>
+        <!-- <div *ngIf="LoginForm.get('otp').errors.otp">
+          Incorrect otp 
+        </div> -->
+      </div> 
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" (click)="login(LoginForm.value)" [disabled]="LoginForm.invalid">
+        Login
+      </button>
+      <!-- <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          Modal content
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+              <p *ngIf="msg" style="color: green;" >{{msg}}</p>
+              <p *ngIf="!msg" style="color: red;" >invalid</p> 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" [routerLink]="['/owner-dashboard']" >OK</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </form>
+  <p class="text-center"><a [routerLink]="['/owner-register']">Create an Account</a></p>
+</div>

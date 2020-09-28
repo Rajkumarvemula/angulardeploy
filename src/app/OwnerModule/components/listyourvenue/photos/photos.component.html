@@ -1,0 +1,89 @@
+<!-- =================================================================================
+                        VEDIKAS LOGO
+================================================================================== -->
+<nav class="navbar navbar-white bg-white">
+    <a class="navbar-brand" href="#">
+        <img src="../../../../../assets/Images/ProjectName1.png" alt="Vedikas" style="width: 140px;">
+    </a>
+</nav>
+<!-- =================================================================================
+    		            PROGRESS BAR
+================================================================================== -->
+<section class="main">
+    <div class="container">
+        <p style="margin-top: 50px;">Progress</p>
+        <div class="progress" style="height: 6px;">
+            <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="0" aria-valuemin="30"
+                aria-valuemax="100"></div>
+        </div>
+        <hr>
+        <!-- =================================================================================
+    		            WELCOME OPTIONS WITH GRID 
+================================================================================== -->
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <h4><a [routerLink]="['../dashboard/']">Welcome</a></h4>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../location/']" style="padding-left: 20px;">Location</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../details/']" style="padding-left: 20px;">Details</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="rec"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../photos/']" style="padding-left: 20px;">Photos</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="rec"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../security/']" style="padding-left: 20px;">Security</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="rec"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../payment/']" style="padding-left: 20px;">Payment</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="rec"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../publishlisting/']" style="padding-left: 20px;">Publish listing</a><br><br>
+            </div>
+            <!-- =================================================================================
+    		           OWNER FUNCTION HALL PHOTOS
+================================================================================== -->
+            <div class="col-md-8" style="margin-top: 20px;">
+                <div class="data" style="height: auto;padding: 40px; margin-bottom: 60px;">
+                    <b>
+                        <h2 class="title">Add photos of your functionhalls</h2>
+                    </b>
+                    <p>Let guests see why they should pick your functionhalls with well-lit,
+                        landscape-oriented photos of these areas they will be able to acess.
+                    </p>
+
+                    <form>
+                        <div>
+                            <label for="file" button type="file" name="file" class="btn btn-primary"
+                                style=" margin-left: 200px; margin-top: 30px; border-radius: 40px;"><i
+                                    class="fa fa-plus" style="margin-right: 7px;"></i>Add photos</label>
+                            <input type="file" id="file" name="myImage" accept="image/x-png, image/jpg" (change)="onFileChange($event)"
+                                value="file" style="visibility:hidden;" multiple/>
+                        </div>
+
+                        <div class="row" style="margin-left: 6px;">
+                            <img *ngFor='let url of urls' [src]="url" height="120px" width="170px" style="margin: 3px;">
+                        </div>
+
+                        <b>
+                            <p style="margin-top: 30px;">You need at least 6 photos</p>
+                        </b>
+
+                        <p>Photos must be JPEG or PNG format and at least 1024x683 pixels.</p>
+                        <hr>
+                        <!-- =================================================================================
+    		           BACK AND NEXT BUTTONS
+                     ================================================================================== -->
+                        <span>
+                            <button type="button" class="btn btn-outline-primary" (click)="back()">Back</button>
+                            <button type="button" class="btn btn-primary" style="margin-left: 375px;"
+                                (click)="next()">Next</button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

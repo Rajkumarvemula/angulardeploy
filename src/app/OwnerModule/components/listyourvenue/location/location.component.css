@@ -1,0 +1,60 @@
+/*===============================================
+                MAIN CLASS
+=================================================*/
+.main{
+    position: relative;
+    background-color: rgb(248, 249, 250);
+    min-height: 90vh;
+    background-size: cover;
+    background-position: center;
+}
+/*===============================================
+                HEADINGS
+=================================================*/
+h4{
+    margin-top: 50px;
+    margin-left: 59px;
+    padding-bottom: 20px;
+}
+/*===============================================
+                BUTTON
+=================================================*/
+button{
+  border-radius: 30px;
+  margin-top: 10px; 
+  height: 40px;
+}
+/*===============================================
+                ANCHOR ROUTE LINK
+=================================================*/
+a{
+    text-decoration: black;
+    color: #323f4d;
+    font-size: 16px;
+    font-weight: 400px; 
+    font-family: Lato,Noto Sans JP,Noto Sans KR,Lucida Grande,Segoe UI,Tahoma,-apple-system,Roboto,sans-serif;;
+    
+}
+/*===============================================
+                VALIDATIONS
+=================================================*/
+.invalid-feedback{
+    color: red;
+}
+/*===============================================
+                CLASS DATA
+=================================================*/
+.data{
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 34, 51, 0.1);
+    box-shadow: 2px 4px 10px 0 rgba(0, 34, 51, 0.05), 2px 4px 10px 0 rgba(0, 34, 51, 0.05);
+    border-radius: 0.15rem;
+    width: 650px;
+}
+/*===============================================
+                ASTERISK * SYMBOL
+=================================================*/
+.required {
+    color: red;    font-weight: bold;
+
+  }

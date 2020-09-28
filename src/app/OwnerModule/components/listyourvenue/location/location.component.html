@@ -1,0 +1,170 @@
+<!-- =================================================================================
+                        VEDIKAS LOGO
+================================================================================== -->
+<nav class="navbar navbar-white bg-white">
+    <a class="navbar-brand" href="#">
+        <img src="../../../../../assets/Images/ProjectName.png" alt="Vedikas" style="width: 140px;">
+    </a>
+</nav>
+<!-- =================================================================================
+    		            PROGRESS BAR
+================================================================================== -->
+<section class="main">
+    <div class="container">
+        <p style="margin-top: 50px;">Progress</p>
+        <div class="progress" style="height: 6px;">
+            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100">
+            </div>
+        </div>
+        <hr>
+        <!-- =================================================================================
+    		            WELCOME OPTIONS WITH GRID 
+================================================================================== -->
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <h4><a [routerLink]="['../dashboard/']">Welcome</a></h4>
+                <img src="../../../../../assets/Images/rec.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../location/']" style="padding-left: 20px;">Location</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../details/']" style="padding-left: 20px;">Details</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../photos/']" style="padding-left: 20px;">Photos</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../security/']" style="padding-left: 20px;">Security</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../payment/']" style="padding-left: 20px;">Payment</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../publishlisting/']" style="padding-left: 20px;">Publish listing</a><br><br>
+            </div>
+            <!-- =================================================================================
+    		           OWNER LOCATION FORM
+================================================================================== -->
+            <div class="col-md-8" style="margin-top: 20px;">
+                <div class="data" style="height: auto;padding:40px;  margin-bottom: 80px;">
+                    <h2>Where is your function hall located</h2>
+                    <p>Your address is only shared with guests who have booked your functionhall</p>
+                    <hr>
+
+                    <form [formGroup]="LocationForm" ngSubmit="onclick()">
+
+                        <div class="form-group">
+                            <label for="name">Country<span class="required">*</span></label>
+                        
+                            <div *ngIf="LocationForm.get('name').touched && LocationForm.get('name').invalid" class="invalid-feedback">
+                                <div *ngIf="LocationForm.get('name').errors.required">Country is required
+                                </div>
+                                <div *ngIf="LocationForm.get('name').errors.name">Country must be a valid
+                                </div>
+                            </div>
+                        
+                            <select class="form-control" (change)="getStates($event.target.name)" formControlName="name" placeholder="name"
+                                name="India" style="height: 50px;"
+                                [ngClass]="{'is-invalid':LocationForm.get('name').touched && LocationForm.get('name').invalid}">
+                        
+                                <option>India</option>
+                                <!-- <option *ngFor="let data of stateInfo ">{{data.name}} </option> -->
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="name">State<span class="required">*</span></label>
+
+                            <div *ngIf="LocationForm.get('state').touched && LocationForm.get('state').invalid"
+                                class="invalid-feedback">
+                                <div *ngIf="LocationForm.get('state').errors.required">State Name is required
+                                </div>
+                                <div *ngIf="LocationForm.get('state').errors.state">state must be a valid state
+                                    Address
+                                </div>
+                            </div>
+
+                            <select class="form-control" (change)="getCities($event.target.value)"
+                                formControlName="state" placeholder="state" name="state" style="height: 50px;"
+                                [ngClass]="{'is-invalid':LocationForm.get('state').touched && LocationForm.get('state').invalid}">
+
+                                <option value="" disabled selected hidden>Select State</option>
+                                <option *ngFor="let data of stateInfo ">{{data.name}} </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">City<span class="required">*</span></label>
+
+                            <div *ngIf="LocationForm.get('city').touched && LocationForm.get('city').invalid"
+                                class="invalid-feedback">
+                                <div *ngIf="LocationForm.get('city').errors.required">city Name is required
+                                </div>
+                                <div *ngIf="LocationForm.get('city').errors.city">city must be a valid city
+                                </div>
+                            </div>
+
+                            <select class="form-control" name="city" formControlName="city" style="height: 50px;"
+                                [ngClass]="{'is-invalid':LocationForm.get('city').touched && LocationForm.get('city').invalid}">
+
+                                <option value="" disabled selected hidden>Select City</option>
+                                <option *ngFor="let data of cityInfo ">{{data}} </option>
+                            </select>
+                        </div>
+                        <div class="form-group ">
+                            <label for="name">Street Address<span class="required">*</span></label>
+
+                            <input type="text" name="streetAddress" class="form-control" formControlName="streetAddress"
+                                placeholder="Street address" style="height: 50px;"
+                                [ngClass]="{'is-invalid':LocationForm.get('streetAddress').touched && LocationForm.get('streetAddress').invalid}" />
+                            <div *ngIf="LocationForm.get('streetAddress').touched && LocationForm.get('streetAddress').invalid"
+                                class="invalid-feedback">
+                                <div *ngIf="LocationForm.get('streetAddress').errors.required">Street Address
+                                    is
+                                    required</div>
+                                <div *ngIf="LocationForm.get('streetAddress').errors.streetAddress">
+                                    streetAddress
+                                    must be a
+                                    valid streetAddress</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="name">Postal Code<span class="required">*</span></label>
+
+                            <input type="number" name="zipcode" class="form-control" style="height: 50px;"
+                                formControlName="zipcode" placeholder="Postal Code" minLength="5" maxLength="6"
+                                [ngClass]="{'is-invalid':LocationForm.get('zipcode').touched && LocationForm.get('zipcode').invalid}" />
+                            <div *ngIf="LocationForm.get('zipcode').touched && LocationForm.get('zipcode').invalid"
+                                class="invalid-feedback">
+                                <div *ngIf="LocationForm.get('zipcode').errors.required">Postal Code is
+                                    required
+                                </div>
+                                <div *ngIf="LocationForm.get('zipcode').errors.zipcode">zipcode must be
+                                    a
+                                    valid
+                                    zipcode
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- =================================================================================
+    		           BACK AND NEXT BUTTONS
+================================================================================== -->
+                        <span>
+                            <button type="button" class="btn btn-outline backbutton" (click)="back()">Back
+                            </button>
+                            <button type="button" style="margin-left: 362px; border-radius: 30px;"
+                                class="btn btn-primary " [disabled]="LocationForm.invalid" (click)="onclick()">Save
+                                and
+                                continue
+                            </button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

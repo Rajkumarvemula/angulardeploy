@@ -1,0 +1,248 @@
+<div class="sidenav" *ngFor="let item of data">
+    <div class="row">
+        <div class="col-md-6" style="padding-left: 60px;">
+            <h2 style="margin-bottom: 25px;">&#x20B9;{{item.functionhallPrice}}</h2>
+            <p>**** 1 Review</p>
+        </div>
+        <div class="col-md-6">
+            <button class="btn"
+                style="margin-left: 60px; margin-top: 15px; border-radius: 20px; width: 80px; margin-bottom: 20px;">Save</button><br>
+            <button class="btn"
+                style="margin-left: 60px; margin-top: 5px; border-radius: 20px; width: 80px;">Share</button>
+        </div>
+    </div><br><br>
+    <form style="margin-left: 25px;">
+        <div class="row">
+            <div class="col-md-5">
+                <input type="date" id="dateOfBirth" name="dateOfBirth" popup-placement="left" [(ngModel)]="dateOfBirth" class="form-control" placeholder="Check In" popup-placement="left" 
+                style="height: 60px; width: 202px;margin-right: 200px;">
+            </div>
+            <div class="col-md-7">
+                <select class="form-control" id="sel1" style="height: 60px; width: 191px;">
+                    <option selected disabled>Time Slot</option>
+                    <option>4am To 4pm</option>
+                    <option>4pm To 4am</option>
+                    <option>Full Day</option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-group">
+            <select class="form-control" id="sel1" style="height: 60px; width: 393px;">
+                <option selected disabled>Guests </option>
+                <option>100 - 200</option>
+                <option>200 - 400</option>
+            </select>
+        </div>
+    </form><br>
+
+    <section class="calculation">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Hall Price</h4>
+            </div>
+            <div class="col-md-6">
+                <h4 style="margin-left: 50px;">&#x20B9;{{item.functionhallPrice}}</h4>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h4>GST</h4>
+            </div>
+            <div class="col-md-6">
+                <h4 style="margin-left: 50px;">{{item.gstpercentage}}</h4> 
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <h4><b>Total</b></h4>
+            </div>
+            <div class="col-md-6">
+                <h4 style="margin-left: 50px;"><b>&#x20B9; {{item.grandTotal}}</b></h4>
+            </div>
+        </div>
+        <hr>
+    </section><br>
+    
+    <button class="btn btn-primary" style="width: 220px; height: 60px; border-radius: 30px; margin-left: 120px; font-size: 19px;"(click)="moreInfo(item.ownerId)"><b>Request to Book</b></button>
+</div>
+
+<div *ngFor="let item of data">
+    <div id="slider">
+        <figure>
+            <img src="{{item.imageUrl[0]}}" style="width: 1170px; height: 550px;">
+            <img src="{{item.imageUrl[1]}}" alt="" height="550px" width="1170px">
+            <img src="{{item.imageUrl[2]}}" alt="" height="550px" width="1170px">
+            <!-- <img src="../../../../../assets/Images/hall.jpg" alt="" height="550px" width="1170px">
+            <img src="../../../../../assets/Images/hall.jpg" alt="" height="550px" width="1170px"> -->
+        </figure>
+    </div>
+    <div>
+        <img src="{{item.imageUrl[0]}}" alt="halls" style="width: 1170px; height: 550px;">
+    </div>
+    
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+        <header class="animated fadeInDown" id="navbar">
+            <nav class="navbar navbar-white navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#Overview">Overview</a></li>
+                                <li><a href="#Amenities">Amenities</a></li>
+                                <li><a href="#Policies">Policies</a></li>
+                                <li><a href="#Reviews">Reviews</a></li>
+                                <li><a href="#Owner">Owner</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section class="web_homePage" (scroll)="onWindowScroll($event);">
+            <div id="Overview" class="container-fluid" style="margin-left: 30px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3><b>{{item.name}}</b></h3><br>
+                        <p><i class="fa fa-map-marker" style="padding-right: 18px;"></i>{{item.city}}, {{item.zipcode}}, {{item.state}}</p>
+                        <p><i class="fa fa-bed" style="padding-right: 10px;"></i>Hall Type: {{item.roomtype}}</p>
+                        <p><i class="fa fa-cutlery" style="padding-right: 15px;"></i>Food Type: {{item.foodtype}}</p>
+                        <p><img src="../../../../../assets/Images/peoples.jpg" alt="peoples"
+                                style="height: 20px;width: 20px; margin-right: 6px;">Maximum Guests: {{item.correlationid}}</p>
+                    </div>
+                </div>
+                <hr>
+                <tr>
+                    <td><button class="btn btn-light">No smoking</button></td>
+                    <td style=" padding-left: 20px;"><button class="btn btn-light">Music Allowed</button></td>
+                    <td style=" padding-left: 20px;"><button class="btn btn-light">Air Conditioning</button></td>
+                    <td style=" padding-left: 20px;"><button class="btn btn-light">Fire crackers allowed</button></td>
+                </tr>
+                <hr>
+                <h3><b>Summary</b></h3>
+                <p>
+                    <!-- {{item.functionhalldescription}} -->
+                    The Nimmala Convention Hall located in Hitech City,
+                    Hyderabad has Cocktail Venues, Banquet Halls, Wedding Lawns,
+                    5 Star Wedding Hotels, Birthday Party Halls, Party Halls,
+                    Party Plots and Marriage Halls. Ashok Gardens Lawn can accommodate upto 400 guests in seating and 600
+                    guests
+                    in
+                    floating.
+                    Vegetarian and Non Vegetarian food is served at this venue. Features of
+                    this wedding venues are : Food provided by the venue , Non-Veg allowed
+                    at the venue , Alcohol allowed at the venue , Music allowed late , Halls
+                    are air Conditioned , Ample parking , Baarat allowed , Fire crackers
+                    allowed , Hawan allowed , Overnight wedding allowed , Decor provided
+                    by the venue , Packages starts at Rs 2,450 per plate for vegetarian menu
+                    and at Rs 2,450 for non veg menu.
+                </p>
+                <div id="Amenities" class="container-fluid">
+                    <h3><b>Amenities</b></h3>
+                    <hr>
+                    <h3><b>Featured</b></h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p><i class="fa fa-automobile" style="padding-right: 20px;"></i>Parking</p>
+                            <p><i class="fa fa-wifi" style="padding-right: 20px;"></i>Internet</p>
+                            <p><img src="../../../../../assets/Images/images (5).png" alt="no smoking"
+                                    style="height: 20px;width: 20px; margin-right: 15px;">No Smoking</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><img src="../../../../../assets/Images/download (5) - Copy.png" alt="air conditioning"
+                                    style="height: 20px;width: 20px; margin-right: 15px;">Air Conditioning</p>
+                            <p><img src="../../../../../assets/Images/images (2).png" alt=" Professional sound system"
+                                    style="height: 20px;width: 20px; margin-right: 15px;">Sound system</p>
+                            <p><img src="../../../../../assets/Images/images (4).png" alt=" Professional lighting system"
+                                    style="height: 20px;width: 20px; margin-right: 15px;">Lighting system</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><img src="../../../../../assets/Images/download (6) - Copy.png" alt="Dance floor"
+                                    style="height: 20px;width: 20px; margin-right: 15px;">Dance floor</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h3><b>Event Types</b></h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Party</p>
+                        <p>Wedding</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Meeting</p>
+                        <p>Conference</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Performance / show</p>
+                        <p>Christmas Party</p>
+                    </div>
+                </div>
+                <hr>
+                <h3><b>Venue Type</b></h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Multi-purpose event space</p>
+                        <p>Nightclub / Bar</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Party room</p>
+                        <p>Stage</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Banquet hall</p>
+                        <p></p>
+                    </div>
+                </div>
+                <div id="Policies" class="container-fluid">
+                    <h3><b>Policies</b></h3>
+                    <h3><b>Cancellation Policy</b></h3>
+                    <hr>
+                    <p>100% refund if you cancel at least 14 days before check-in.</p>
+                    <p>50% refund (minus the service fee) if you cancel at least 7 days before check-in.</p>
+                    <p>No refund if you cancel less than 7 days before check-in.</p>
+                    <p>Learn more about our</p><a href="#">cancellation policies.</a>
+                </div>
+                <h3><b>Damage and Incidentals</b></h3>
+                <hr>
+                <p>You will be responsible for any damage to the rental halls caused by you or your party during your stay.
+                </p>
+                <h3><b>Functionhall Rules</b></h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><b><img src="../../../../../assets/Images/check-in.png" alt="check-in"
+                                    style="height: 20px;width: 20px; margin-right: 6px;"></b>Check in after: 4:00 AM</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p><img src="../../../../../assets/Images/sing-out1.jpg" alt="check-out"
+                                style="height: 20px;width: 20px; margin-right: 6px;">Check out before: 4:00 PM</p>
+                    </div>
+                </div>
+                <hr>
+                <div id="Reviews" class="container-fluid">
+                    <h3><b>Reviews</b></h3>
+                    <p>****1</p>
+                </div>
+               
+                <div id="Owner" class="container-fluid">
+                    <h3><b>Owner</b></h3>
+                    <p><img src="../../../../../assets/Images/user1.png"
+                            style="height: 40px; width: 40px; border-radius: 20px; margin-right: 15px;"><b>Owner</b></p>
+                    <p><b>Languages:</b>English</p>
+                    <hr>
+                    <a href="#"><b>View more about Owner</b></a>
+                </div>
+               
+            </div>
+        </section>
+    </body>
+</div>
+

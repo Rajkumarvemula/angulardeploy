@@ -1,0 +1,144 @@
+<nav class="navbar" style="height: 80px;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="site-header-logo__link flex-item" itemprop="url" title="Vedikas" href="#"> <img alt="vedikas logo"
+                    class="site-header-logo__img Header-BG img-responsive" itemprop="logo"
+                    src="../../../../assets/Images/Vedikas-logo.png" alt="Vedikas" width="160px" height="120px" style="margin-top: 10px;"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" style="margin-right: 20px; margin-top: 12px;" href="#"><i style="padding-right: 5px;" class="fa fa-user"></i><b>Login</b><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a routerLink="/owner-login"> Owner Login</a></li>
+                        <li><a routerLink="/login">User Login</a></li>
+                    </ul>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;<li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" style="margin-right: 20px; margin-top: 12px;" href="#"><i style="padding-right: 5px;" class="fa fa-question-circle"></i><b>Help</b> <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a routerLink="/help">Owner Help</a></li>
+                        <li><a routerLink="/help">User Help</a></li>
+                    </ul>
+                </li>
+                <button class=" btn btn-primary" type="button" (click)="onclick()" style="margin-right: 20px; width: 180px; margin-top: 15px;"><b style="color: white;">List Your Venue</b></button>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div class="HeroImage">
+    <!-- <picture class="HeroImage__picture">
+        <source media="(max-width: 479px)" type="image/jpeg"><img class="HeroImage__img"
+            src="../../../../assets/Images/hall.jpg" alt="Villa by the ocean"></picture> -->
+            <div id="slider">
+                <figure>
+                  <img src="./assets/Images/shardayyy-photography-fJzmPe-a0eU-unsplash.jpg" height="450px" width="800px" style="opacity: 0.6;" >
+                  <img src="./assets/Images/samantha-gades-6vL0FgVyDiY-unsplash.jpg" alt="" height="450px" width="800px" style="opacity: 0.6;">
+                  <img src="./assets/Images/halls.jpg" alt="" 
+                  style="opacity: 0.6;" height="450px" width="800px">
+                  <img src="./assets/Images/mccainpictures071.jpg" alt="" height="450px" width="800px" style="opacity: 0.6;">
+                  <!-- <img src="./assets/Images/mccainpictures071.jpg" alt="" height="450px" width="800px" style="opacity: 0.6;"> -->
+                  <img src="./assets/Images/shardayyy-photography-fJzmPe-a0eU-unsplash.jpg" height="450px" width="800px" style="opacity: 0.6;" >
+                </figure>
+              </div>
+    <div class="Jumbotron">
+        <div class="Jumbotron__wrapper">
+            <div class="Jumbotron__content">
+                <h1 class="HeadLine" style="font-weight: 500; color: rgba(29, 28, 28, 0.884);"><span class="HeadLine__text">Discover The Perfect Place For</span><span
+                    class="HeadLine__text" style="font-weight: 500; color: rgba(29, 28, 28, 0.884)">A Great Occasion</span></h1><span class="sr-only" tabindex="-1"
+                    id="skipToPageSearch">Search</span>
+                <!-- Search Bar Form -->
+                <form class="search-form search-form--feature search-form--center" style="padding: 15px;">
+                    <div class="search-form__fields">
+                        <div class="search-form__field search-form__destination-field">
+                            <div role="application" class="react-destination-typeahead closed">
+                                <div class="sr-only" aria-atomic="true" aria-live="polite" role="status">
+                                    <span aria-hidden="true"></span>
+                                </div>
+                                <div class="search-destination-input" role="combobox" aria-haspopup="listbox"
+                                    aria-expanded="false">
+                                    <div class="search-destination-input" role="combobox" aria-haspopup="listbox"
+                                        aria-expanded="true" aria-controls="Typeahead__results">
+                                        <div role="presentation"
+                                            class="search-destination-input__header state--open-select-destination">
+                                            <div class="search-destination-input__header__inputs form-group has-feedback floating-label not-empty has-icon"
+                                                data-toggle="label" aria-required="search">
+                                                <label for="react-destination-typeahead">Location or Venue Name</label>
+                                                <input type="text" [(ngModel)]="query" name="query"
+                                                    id="react-destination-typeahead" size="10" tabindex="0"
+                                                    class=" form-control" autocomplete="off" aria-autocomplete="both">
+
+
+                                                <span class="form-control-icon search-destination-input__icon">
+                                                    <span class="SVGIcon SVGIcon--24px search-form__icon">
+                                                        <svg focusable="false" data-id="SVG_LOCATION__24" width="24"
+                                                            height="24" viewBox="0 0 24 24">
+                                                            <g fill="none" stroke-linecap="round"
+                                                                stroke-linejoin="round">
+                                                                <path
+                                                                    d="M6.45 13.47a6.75 6.75 0 0 1 .73-8.7l.05-.04a6.75 6.75 0 0 1 9.54 0l.05.05a6.75 6.75 0 0 1 .73 8.7L12 21.24l-5.55-7.78z">
+                                                                </path>
+                                                                <path
+                                                                    d="M14.24 9.55a2.24 2.24 0 1 1-4.48 0 2.24 2.24 0 0 1 4.48 0z">
+                                                                </path>
+                                                            </g>
+                                                        </svg>
+                                                    </span>
+                                                </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" type="date"
+                            class="form-control" style="max-width: 180px;     border: 1px solid rgba(0, 34, 51, 0.1);
+                            box-shadow: 2px 4px 10px 0 rgba(0, 34, 51, 0.05), 2px 4px 10px 0 rgba(0, 34, 51, 0.05);">
+                        <div class="form-group">
+                            <select class="form-control" id="sel1" style="max-width: 150px; border: 1px solid rgba(0, 34, 51, 0.1);
+                            box-shadow: 2px 4px 10px 0 rgba(0, 34, 51, 0.05), 2px 4px 10px 0 rgba(0, 34, 51, 0.05);">
+                                <option selected disabled>Time Slot</option>
+                                <option>4am To 4pm</option>
+                                <option>4pm To 4am</option>
+                                <option>Full Day</option>
+
+                            </select>
+                        </div>
+                        <div class="col-10">
+                            <input class="form-control" type="number" placeholder="Guests" id="example-number-input"
+                                style="max-width: 150px; border: 1px solid rgba(0, 34, 51, 0.1);
+                                box-shadow: 2px 4px 10px 0 rgba(0, 34, 51, 0.05), 2px 4px 10px 0 rgba(0, 34, 51, 0.05);">
+                        </div>
+                        <!-- Guests Bar -->
+                        <!-- Search Button -->
+                        <button (click)="findFunctionhallByNameAndCity()" type="button"
+                            class="btn btn-primary search-form__button search-form__submit-button"
+                            style="margin-bottom: 15px;" type="submit">
+                            <span class="btn__label">
+                                <!-- Search SVGIcon -->
+                                <span class="SVGIcon SVGIcon--24px search-form__icon">
+                                    <svg focusable="false" data-id="SVG_SEARCH__24" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <path d="M16.7 13.2a6.5 6.5 0 1 0-1.4 2m0 0l4.6 4.6" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </span>
+                                <span>Search</span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

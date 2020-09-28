@@ -1,0 +1,61 @@
+<!-- =========================================================
+                      FUNCTION HALL LIST
+=========================================================== -->
+<div class="column-layout">
+    <div class="main-column">
+        <div *ngFor="let item of data" (click)="moreInfo(item.ownerId)">
+            <div class="Hit media-flex media-flex--left media-flex--xs" data-wdio="hit" role="listitem">
+                <!-- =========================================================
+                      FUNCTION HALL IMAGE VIEW 
+              =========================================================== -->
+                <a style="cursor:pointer" class="list-group-item clearfix" routerLinkActive="active"
+                    [routerLink]="[item]">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{{item.imageUrl[0]}}" class="card-img"
+                                style="width: 220px; height: 220px; padding-top: 20px;" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="media-flex__body">
+                                    <h2 class="HitInfo__headline hover-text" aria-hidden="true"
+                                        style="margin-top: 20px;">
+                                        {{ item.name }}</h2>
+                                    <div class="HitInfo__details">
+                                        <div class="Details__propertyType Details__label" aria-hidden="true"
+                                            style="margin-top: -20px;"><b>Owner:</b>
+                                            {{ item.ownerFirstName }}</div>
+                                    </div>
+                                    <div class="HitInfo__details">
+                                        <div class="Details__functionhalls Details__label" aria-hidden="true">
+                                            <b>Address:</b>
+                                            <br>{{ item.street }},<br>{{ item.city }},<br>{{ item.state }},<br>{{ item.zipcode }}.
+                                        </div>
+                                    </div>
+                                    <!-- =========================================================
+          BOOK  FUNCTION HALL  
+=========================================================== -->
+                                    <div class="HitInfo__labels">
+                                        <div class="" role="presentation"
+                                            style="display: inline-block; outline: 0px; position: relative;">
+                                            <span role="presentation"
+                                                class="HitInfo__labels_item label label-default label-49">Book
+                                                This Function
+                                                Hall</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-column">
+        <div class="col-md-6" style="margin-left: 100px;">
+            <img src="../../../../assets/Images/Coming Soon.png" style="width: 550px;">
+        </div>
+    </div>
+</div>

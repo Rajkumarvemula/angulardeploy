@@ -1,0 +1,82 @@
+<!-- =================================================================================
+                        VEDIKAS LOGO
+================================================================================== -->
+<nav class="navbar navbar-white bg-white">
+    <a class="navbar-brand" href="#">
+        <img src="../../../../../assets/Images/ProjectName.png" alt="Vedikas" style="width: 140px;">
+    </a>
+</nav>
+<!-- =================================================================================
+    		            PROGRESS BAR
+================================================================================== -->
+<section class="main">
+    <div class="container pt-5">
+        <p style="margin-top: 50px;">Progress</p>
+        <div class="progress" style="height: 6px;">
+            <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+                aria-valuemax="100"></div>
+        </div>
+        <hr>
+<!-- =================================================================================
+    		            WELCOME OPTIONS WITH GRID 
+================================================================================== -->
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <h4><a [routerLink]="['../dashboard/']">Welcome</a></h4>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../location/']" style="padding-left: 20px;">Location</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../details/']" style="padding-left: 20px;">Details</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../photos/']" style="padding-left: 20px;">Photos</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../security/']" style="padding-left: 20px;">Security</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../payment/']" style="padding-left: 20px;">Payment</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../publishlisting/']" style="padding-left: 20px;">Publish listing</a><br><br>
+            </div>
+<!-- =================================================================================
+    		          PUBLISH LISTING BUTTON
+================================================================================== -->
+            <div class="col-md-8" style="margin-top: 20px;">
+
+                <div class="data" style="height: auto;padding:40px ;">
+                    <p><b>Hit Publish To Upload Your Halls Data</b></p>
+                    <hr>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"
+                        style="margin-left: 210px;" (click)="onPublish()">
+                        <b>Publish</b> 
+                    </button>
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                        tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel"><b>Thank You</b></h5>
+                                </div>
+<!-- =================================================================================
+    		          CLOSE AND OKAY  BUTTONS
+================================================================================== -->
+                                <div class="modal-body" style="color:rgb(0, 228, 34);">
+                                    <b>You have successfully Uploaded FunctionHall Details.</b>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                        (click)="onclick()">Okay</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

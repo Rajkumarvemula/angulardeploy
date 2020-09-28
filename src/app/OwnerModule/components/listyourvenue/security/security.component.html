@@ -1,0 +1,99 @@
+<!-- =================================================================================
+                        VEDIKAS LOGO
+================================================================================== -->
+<nav class="navbar navbar-white bg-white">
+    <a class="navbar-brand" href="#">
+        <img src="../../../../../assets/Images/ProjectName.png" alt="Vedikas" style="width: 140px;">
+    </a>
+</nav>
+<!-- =================================================================================
+    		            PROGRESS BAR
+================================================================================== -->
+<section class="main">
+    <div class="container pt-5">
+        <p style="margin-top: 50px;">Progress</p>
+        <div class="progress" style="height: 6px;">
+            <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0"
+                aria-valuemax="100"></div>
+        </div>
+        <hr>
+<!-- =================================================================================
+    		            WELCOME OPTIONS WITH GRID 
+================================================================================== -->
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <h4><a [routerLink]="['../dashboard/']">Welcome</a></h4>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../location/']" style="padding-left: 20px;">Location</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../details/']" style="padding-left: 20px;">Details</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../photos/']" style="padding-left: 20px;">Photos</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../security/']" style="padding-left: 20px;">Security</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../payment/']" style="padding-left: 20px;">Payment</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check"
+                    style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../publishlisting/']" style="padding-left: 20px;">Publish listing</a><br><br>
+            </div>
+<!-- =================================================================================
+    		           OWNER MOBILE NUMBER SECURITY FORM
+================================================================================== -->
+            <div class="col-md-8" style="margin-top: 20px;">
+                <div class="data" style="height: auto;padding:40px ;">
+                    <div class="checklist-header-container xs">
+                        <h1>Protect your account</h1>
+                        <hr>
+                    </div>
+                    <p>Send a verification code to your phone to confirm your identity</p>
+                    <p><strong>Choose the phone number you'd like to use.</strong></p>
+
+                    <form [formGroup]="SecurityForm" ngSubmit="next">
+                        <div class="form-group ">
+                            <label for="mobileNumber"></label>
+                            <input type="tel" id="mobileNumber" class="form-control" formControlName="mobileNumber"
+                                placeholder="Phone Number" style="height: 50px;" maxlength="13" size="13"
+                                pattern="[0-9 -()+]+$" required
+                                [ngClass]="{'is-invalid':SecurityForm.get('mobileNumber').touched && SecurityForm.get('mobileNumber').invalid}" />
+                            <div *ngIf="SecurityForm.get('mobileNumber').touched && SecurityForm.get('mobileNumber').invalid"
+                                class="invalid-feedback">
+                                <div *ngIf="SecurityForm.get('mobileNumber').errors.required">Mobile Number is
+                                    required
+                                </div>
+                                <div *ngIf="SecurityForm.get('mobileNumber').errors.mobileNumber">Mobile Number must be
+                                    a
+                                    valid Number
+                                </div>
+                            </div>
+
+                        </div>
+                        <h3><b>Verify using:</b></h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radio" id="radio1" value="option1"
+                                required>
+                            <label class="form-check-label" for="radio1" style="padding-left: 10px;">
+                                Text message
+                            </label>
+                        </div>
+                        <hr>
+<!-- =================================================================================
+    		           BACK AND NEXT BUTTONS
+================================================================================== -->
+                        <span>
+                            <button type="button" class="btn btn-outline-primary" (click)="back()">Back</button>
+                            <button type="button" class="btn btn-primary" style="margin-left: 375px;"
+                                [disabled]="SecurityForm.invalid" (click)="next()">Next
+                            </button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

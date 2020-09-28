@@ -1,0 +1,210 @@
+<!-- =================================================================================
+                        VEDIKAS LOGO
+================================================================================== -->
+<nav class="navbar navbar-white bg-white">
+    <a class="navbar-brand" href="#">
+        <img src="../../../../../assets/Images/ProjectName.png" alt="Vedikas" style="width: 140px;">
+    </a>
+</nav>
+<!-- =================================================================================
+    		            PROGRESS BAR
+================================================================================== -->
+<section class="main">
+    <div class="container pt-5">
+        <p style="margin-top: 50px;">Progress</p>
+        <div class="progress" style="height: 6px;">
+            <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+            </div>
+        </div>
+        <hr>
+<!-- =================================================================================
+    		            WELCOME OPTIONS WITH GRID 
+================================================================================== -->
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <h4><a [routerLink]="['../dashboard/']">Welcome</a></h4>
+                <img src="../../../../../assets/Images/check.png" alt="Check" style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../location/']" style="padding-left: 20px;">Location</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check" style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../details/']" style="padding-left: 20px;">Details</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check" style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../photos/']" style="padding-left: 20px;">Photos</a><br><br>
+                <img src="../../../../../assets/Images/check.png" alt="Check" style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../security/']" style="padding-left: 20px;">Security</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check" style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../payment/']" style="padding-left: 20px;">Payment</a><br><br>
+                <img src="../../../../../assets/Images/rec.png" alt="Check" style="height: 26px; width: 26px; margin-left: 15px;">
+                <a [routerLink]="['../publishlisting/']" style="padding-left: 20px;">Publish listing</a><br><br>
+            </div>
+<!-- =================================================================================
+    		           OWNER ACCOUNT DETAILS FORM
+================================================================================== -->
+            <div class="col-md-8">
+                <div class="card-body" style="margin-top: 20px;">
+                    <div class="data" style="height: auto;padding: 40px;">
+                        <h2><b>Provide your banking details</b></h2>
+                        <hr>
+                        <form [formGroup]="AccountdetailsForm" ngSubmit="onclick()">
+
+                            <div class="form-group ">
+                                <label for="accountNumber">Account Number<span class="required">*</span></label>
+                                <input type="text" id="accountNumber" class="form-control"
+                                    formControlName="accountNumber" style="height: 50px;"
+                                    maxlength="15" size="15" pattern="/\+91[0-9]{15}/" required
+                                    [ngClass]="{'is-invalid':AccountdetailsForm.get('accountNumber').touched && AccountdetailsForm.get('accountNumber').invalid}" />
+                                <div *ngIf="AccountdetailsForm.get('accountNumber').touched && AccountdetailsForm.get('accountNumber').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="AccountdetailsForm.get('accountNumber').errors.required">
+                                        Account Number is required
+                                    </div>
+                                    <div *ngIf="AccountdetailsForm.get('accountNumber').errors.accountNumber">
+                                        Account Number must be a valid Account Number
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group ">
+                                <label for="accountName">Account Name<span class="required">*</span></label>
+                                <input type="text" id="accountName" class="form-control" formControlName="accountName"
+                                    style="height: 50px;" 
+                                    [ngClass]="{'is-invalid':AccountdetailsForm.get('accountName').touched && AccountdetailsForm.get('accountName').invalid}" />
+                                <div *ngIf="AccountdetailsForm.get('accountName').touched && AccountdetailsForm.get('accountName').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="AccountdetailsForm.get('accountName').errors.required">Account Name is required
+                                    </div>
+                                    <div *ngIf="AccountdetailsForm.get('accountName').errors.accountName">Account Name must be a valid Name
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group ">
+                                <label for="accountType"> Account Type<span class="required">*</span>
+                                </label>
+
+                                <select class="form-control" formControlName="accountType"
+                                    name="accountType" style="height: 50px;" placeholder=" Account Type "
+                                    [ngClass]="{'is-invalid':AccountdetailsForm.get('accountType').touched && AccountdetailsForm.get('accountType').invalid}">
+
+                                    <option value="" disabled selected hidden> Select Account Type</option>
+                                    <option> Current</option>
+                                    <option>Savings</option>
+                                </select>
+                                <div *ngIf="AccountdetailsForm.get('accountType').touched && AccountdetailsForm.get('accountType').invalid"
+                                class="invalid-feedback">
+                                <div *ngIf="AccountdetailsForm.get('accountType').errors.required">Account Type is required
+                                </div>
+                                <div *ngIf="AccountdetailsForm.get('accountType').errors.accountType">Account Type must be a valid accountType
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="bank"> Bank Name<span class="required">*</span></label>
+                                
+
+                                <select class="form-control" (change)="getBranches($event.target.value)"
+                                     style="height: 50px;" placeholder=" Bank Name "
+                                    formControlName="bank" name="bank" [ngClass]="{'is-invalid':AccountdetailsForm.get('bank').touched && AccountdetailsForm.get('bank').invalid}">
+                    
+                                    <option value="" disabled selected hidden>Select Bank</option>
+                                    <option *ngFor="let data of bankInfo">
+                                        {{data}}
+                                    </option>
+
+                                </select>
+                                <div *ngIf="AccountdetailsForm.get('bank').touched && AccountdetailsForm.get('bank').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="AccountdetailsForm.get('bank').errors.required">Bank Name is required
+                                    </div>
+                                    <div *ngIf="AccountdetailsForm.get('bank').errors.bank">Account Type must be a valid Bank Name
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="branch"> Bank Branch<span class="required">*</span></label>
+                             <select class="form-control" (change)="getIFSC($event.target.value)"
+                                style="height: 50px;" placeholder=" Bank Branch " formControlName="branch"
+                                name="branch"  [ngClass]="{'is-invalid':AccountdetailsForm.get('branch').touched && AccountdetailsForm.get('branch').invalid}">
+
+                                <option value="" disabled selected hidden>Select Bank Branch</option>
+                                <option *ngFor="let data of bankbranchInfo">{{data}}</option>
+                             </select>
+                                <div *ngIf="AccountdetailsForm.get('branch').touched && AccountdetailsForm.get('branch').invalid"
+                                    class="invalid-feedback">
+                                    <div *ngIf="AccountdetailsForm.get('branch').errors.required">Bank Branch is
+                                        required
+                                    </div>
+                                    <div *ngIf="AccountdetailsForm.get('branch').errors.branch">Bank Branch must  be valid
+                                    </div>
+                                </div>
+
+                               
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ifsc"> IFSC Code<span class="required">*</span> </label>
+
+                                <select class="form-control" style="height: 50px;" placeholder=" Bank IFSC "
+                                    formControlName="ifsc" name="ifsc">
+                                    <option selected>Select Branch IFSC</option>
+
+                                    <option *ngFor="let data of  bankbranchIfscInfo ">
+                                        {{data.ifsc}}
+                                    </option>
+                                </select>
+                                <div *ngIf="AccountdetailsForm.get('ifsc').touched && AccountdetailsForm.get('ifsc').invalid"
+                                class="invalid-feedback">
+                                <div *ngIf="AccountdetailsForm.get('ifsc').errors.required">IFSC Code is
+                                    required
+                                </div>
+                                <div *ngIf="AccountdetailsForm.get('ifsc').errors.ifsc">IFSC Code must  be valid
+                                </div>
+                             </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label for="panNumber">PAN Number (Optional) </label>
+                                <input type="text" id="panNumber" class="form-control" formControlName="panNumber"
+                                    placeholder="PAN Number" style="height: 50px;" maxlength="10" size="10"
+                                    pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]$" 
+                                    [ngClass]="{'is-invalid':AccountdetailsForm.get('panNumber').touched && AccountdetailsForm.get('panNumber').invalid}" />
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck"
+                                        formControlName="Tandc"
+                                        [ngClass]="{'is-invalid':AccountdetailsForm.get('Tandc').touched && AccountdetailsForm.get('Tandc').invalid}">
+                                    <div *ngIf="AccountdetailsForm.get('Tandc').touched && AccountdetailsForm.get('Tandc').invalid"
+                                        class="invalid-feedback">1
+                                        <div *ngIf="AccountdetailsForm.get('Tandc').errors.required">
+                                            Accept the terms and conditions
+                                        </div>
+                                    </div>
+
+                                    <label class="form-check-label" for="gridCheck" style="padding-left: 10px;">
+                                        I Agree to the terms and conditions
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <hr>
+<!-- =================================================================================
+    		           BACK AND NEXT BUTTONS
+================================================================================== -->
+                            <span>
+                                <button type="button" class="btn btn-outline-primary" (click)="back()">Back</button>
+                                <button type="button" class="btn btn btn-primary" style="margin-left: 390px;"
+                                    (click)="onclick()">Next</button>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

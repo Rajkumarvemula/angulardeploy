@@ -1,0 +1,244 @@
+<nav class="navbar navbar-white bg-white">
+    <a class="navbar-brand" href="#">
+      <img src="../../../../../assets/Images/ProjectName1.png" alt="Vedikas" style="width: 140px;">
+    </a>
+  </nav>
+  <div class="signup-form">
+    <form [formGroup]="RegisterForm" ngSubmit="onclick()">
+      <h2><strong>Register</strong></h2>
+      <div class="form-group ">
+        <!-- <label>Mobile Number</label> -->
+        <input type="firstName" id="firstName" class="form-control" formControlName="firstName" 
+        placeholder="First Name*"
+        style="height: 40px;"
+        required 
+        [ngClass]="{'is-invalid':RegisterForm.get('firstName').touched && RegisterForm.get('firstName').invalid}" />
+        <div *ngIf="RegisterForm.get('firstName').touched && RegisterForm.get('firstName').invalid"
+          class="invalid-feedback">
+          <div *ngIf="RegisterForm.get('firstName').errors.required" style="color: red;">
+          First Name is required
+          </div>
+          <div *ngIf="RegisterForm.get('firstName').errors.firstName">
+            First Name must be a valid Name
+          </div>
+        </div>
+      </div>
+      <div class="form-group ">
+        <!-- <label>Mobile Number</label> -->
+        <input type="lastName" id="lastName" class="form-control" formControlName="lastName" 
+        placeholder="Last Name*"
+        style="height: 40px;"
+           required 
+          [ngClass]="{'is-invalid':RegisterForm.get('lastName').touched && RegisterForm.get('lastName').invalid}" />
+        <div *ngIf="RegisterForm.get('lastName').touched && RegisterForm.get('lastName').invalid"
+          class="invalid-feedback">
+          <div *ngIf="RegisterForm.get('lastName').errors.required" style="color: red;">
+            Last Name is required
+          </div>
+          <div *ngIf="RegisterForm.get('lastName').errors.lastName">
+            Last Name must be a valid Account Number
+          </div>
+        </div>
+      </div>
+      <div class="form-group ">
+        <!-- <label>Mobile Number</label> -->
+        <input type="userId" id="userId" class="form-control" formControlName="userId" 
+        placeholder="User ID*"
+        style="height: 40px;"
+        required 
+          [ngClass]="{'is-invalid':RegisterForm.get('userId').touched && RegisterForm.get('userId').invalid}" />
+        <div *ngIf="RegisterForm.get('userId').touched && RegisterForm.get('userId').invalid"
+          class="invalid-feedback">
+          <div *ngIf="RegisterForm.get('userId').errors.required" style="color: red;">
+            User ID  is required
+          </div>
+          <div *ngIf="RegisterForm.get('userId').errors.userId">
+            userId must be a valid Account Number
+          </div>
+        </div>
+      </div>
+      <div class="form-group ">
+        <!-- <label>Mobile Number</label> -->
+        <input type="email" id="email" class="form-control" formControlName="email" 
+        placeholder="email@.com*"
+        style="height: 40px;"
+           pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" required 
+          [ngClass]="{'is-invalid':RegisterForm.get('email').touched && RegisterForm.get('email').invalid}" />
+        <div *ngIf="RegisterForm.get('email').touched && RegisterForm.get('firstName').invalid"
+          class="invalid-feedback">
+          <div *ngIf="RegisterForm.get('email').errors.required" style="color: red;">
+            email is required
+          </div>
+          <div *ngIf="RegisterForm.get('email').errors.email">
+            email must be a valid Account Number
+          </div>
+        </div>
+      </div>
+      <div class="form-group ">
+        <input type="mobileNumber" id="mobileNumber" class="form-control" formControlName="mobileNumber"
+          placeholder="Mobile Number*" style="height: 40px;"  
+          required
+          [ngClass]="{'is-invalid':RegisterForm.get('mobileNumber').touched && RegisterForm.get('mobileNumber').invalid}" />
+        <div *ngIf="RegisterForm.get('mobileNumber').touched && RegisterForm.get('mobileNumber').invalid"
+          class="invalid-feedback">
+          <div *ngIf="RegisterForm.get('mobileNumber').errors.required" style="color: red;">
+            Mobile Number is required
+          </div>
+          <div *ngIf="RegisterForm.get('mobileNumber').hasError('pattern')" style="color: red;" >
+            Mobile Number must be a valid Mobile Number, Please find the below Example.
+          </div>
+        </div>
+        <span style="color: rgba(0, 0, 0, 0.322);"> Ex : " +91987654321 "</span>
+      </div>
+      <div class="form-group">
+        <label class="form-check-label">
+          <input type="checkbox" required ><a href="#" style="margin-left: 10px;">I accept the Terms of Use Privacy Policy</a></label>
+      </div>
+      <!-- <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!RegisterForm.valid"
+          (click)="register()">Register Now</button>
+      </div> -->
+      <!-- <div class="col-md-8" style="margin-top: 20px;"> -->
+  
+        <!-- <div class="data" style="height: auto;padding:40px ;"> -->
+  
+            <button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#staticBackdrop"
+                 (click)="register()"  [disabled]="!RegisterForm.valid">
+                Register Now
+            </button>
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel" style="color: green;">Thank You</h5>
+                        </div>
+      <!-- =================================================================================
+          CLOSE AND OKAY  BUTTONS 
+      ================================================================================== -->
+                        <div class="modal-body" style="color:rgb(0, 72, 228);">
+                            <b>You have successfully registred please login.</b>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                (click)="onclick()">Okay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+      <!-- </div> -->
+    </form>
+  </div>
+  
+  
+  <!-- <div class="col-md-8" style="margin-top: 20px;">
+  
+    <div class="data" style="height: auto;padding:40px ;">
+        <p><b>Ready To Go</b></p>
+        <hr>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"
+            style="margin-left: 460px;" (click)="register()">
+            Publish
+        </button>
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+            tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Thank You</h5>
+                    </div> -->
+  <!-- =================================================================================
+      CLOSE AND OKAY  BUTTONS
+  ================================================================================== -->
+                    <!-- <div class="modal-body" style="color:rgb(0, 72, 228);">
+                        <b>You have successfully Uploaded FunctionHall Details.</b>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                            (click)="onclick()">Okay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div> -->
+  
+  
+  
+  <p class="text-center">
+    Already have any account?
+    <a [routerLink]="['/owner-login']">Login</a>
+  </p>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- <section class="main">
+    <div class="signup-form" style="padding-top: 60px;">
+      <form #postForm="ngForm">
+        <h2 style="padding-bottom: 15px;">Register</h2>
+        <div class="form-group">
+          <input type="username" class="form-control" name="username" placeholder="User Name*">
+        </div>
+        <div class="form-group">
+          <input type="firstName" class="form-control" name="firstName" placeholder="First Name*" required ngModel>
+        </div>
+        <div class="form-group">
+          <input type="lastName" class="form-control" name="lastName" placeholder="Last Name*" required ngModel>
+        </div>
+    
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+            placeholder="email*" required ngModel>
+        </div>
+        <div class="form-group">
+          <input placeholder="Mobile Number*" type="Mobile number" class="form-control" required ngModel name="Number"
+            minlength="10" size="10" pattern="[0-9 -()+]+$">
+    
+        </div>
+        <div class="form-group">
+          <label class="form-check-label">
+            <input type="checkbox" required ><a href="#" style="margin-left: 10px;">I accept the Terms of Use Privacy Policy</a></label>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!postForm.valid"
+            (click)="register()">Register Now</button>
+        </div>
+        </form>
+    </div>
+    <div class="text-center" style="color: black;">
+      Already have an account?
+      <a style="color: blue;" [routerLink]="['/login']">login</a>
+    </div>
+  
+  </section> -->
